@@ -9,6 +9,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Context } from '@nuxt/types'
+import { Stream } from '~/types/twitch/Stream'
 
 export default Vue.extend({
   async asyncData (ctx:Context) {
@@ -16,8 +17,10 @@ export default Vue.extend({
     return { streams: ctx.store.getters['streams/streams'] }
   },
   data () {
+    const streams: Array<Stream>|null = null
+
     return {
-      streams: null
+      streams
     }
   },
   head: {
