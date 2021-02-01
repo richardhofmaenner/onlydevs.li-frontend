@@ -1,8 +1,6 @@
 <template>
   <section id="home" class="grid grid-cols-1">
-    <div v-for="stream in streams">
-      <h2>{{ stream.title }}</h2>
-    </div>
+    <StreamList :streams="streams" />
   </section>
 </template>
 

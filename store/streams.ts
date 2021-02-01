@@ -20,9 +20,6 @@ class Streams extends VuexModule {
   async updateStreams () {
     const result = await $axios.$get('/v1/streams/')
     this.context.commit('setStreams', result.data)
-    // .then((result: StreamsResponse) => {
-    //   this.context.commit('setStreams', result.data)
-    // })
   }
 
   get streams () {
