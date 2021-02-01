@@ -1,6 +1,6 @@
 <template>
   <div class="border border-white hover:bg-white hover:text-black relative">
-    <a :href="twitchLink" class="absolute top-0 left-0 w-full h-full" target="_blank"></a>
+    <a :href="twitchLink" class="absolute top-0 left-0 w-full h-full" target="_blank" />
     <img :src="stream.thumbnail_url" alt="">
     <div class="px-4">
       <h3 class="text-xl">

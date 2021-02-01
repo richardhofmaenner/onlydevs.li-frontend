@@ -21,8 +21,7 @@ export default Vue.extend({
   computed: {
     reversedList (): Array<Stream> {
       // eslint-disable-next-line vue/no-mutating-props,vue/no-side-effects-in-computed-properties
-      const reversedStreams = this.streams.reverse()
-      return reversedStreams
+      return this.streams.reverse()
     }
   }
 })
