@@ -21,7 +21,12 @@ export default Vue.extend({
   computed: {
     reversedList (): Array<Stream> {
       // eslint-disable-next-line vue/no-mutating-props,vue/no-side-effects-in-computed-properties
-      return this.streams.reverse()
+      console.log('BaseURL', typeof this.$axios.defaults.baseURL, this.$axios.defaults.baseURL)
+      if (this.streams.length !== null && this.streams.length > 0) {
+        return this.streams.reverse()
+      } else {
+        return  this.streams
+      }
     }
   }
 })

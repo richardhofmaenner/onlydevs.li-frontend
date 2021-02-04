@@ -24,8 +24,8 @@ RUN yarn --production
 
 COPY --from=builder /app/.nuxt .nuxt
 
-EXPOSE 3000
+COPY --from=builder /app/nuxt.config.js nuxt.config.js
 
-USER node
+EXPOSE 3000
 
 CMD ["yarn", "start"]
