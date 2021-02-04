@@ -2,8 +2,6 @@ name: Docker build and push
 
 on:
   workflow_dispatch:
-    inputs:
-      version: 'v1.0'
 
 jobs:
 
