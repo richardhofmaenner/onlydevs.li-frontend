@@ -9,7 +9,7 @@ RUN yarn
 
 COPY . .
 
-RUN rm -r .nuxt
+RUN if [ -d ".nuxt" ]; then rm -rf .nuxt; fi
 
 RUN yarn build
 
