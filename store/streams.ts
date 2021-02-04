@@ -9,7 +9,7 @@ import { Stream } from '~/types/twitch/Stream'
   namespaced: true
 })
 class Streams extends VuexModule {
-  liveStreams: any = 'Hallo Welt'
+  liveStreams: Stream[] = []
 
   @Mutation
   setStreams (streams: Stream[]) {
@@ -18,8 +18,13 @@ class Streams extends VuexModule {
 
   @Action
   async updateStreams () {
-    const result: StreamsResponse = await $axios.$get('/v1/streams/')
-    this.context.commit('setStreams', result.data)
+    await $axios.$get('/v1/streams/')
+      .then((result: StreamsResponse) => {
+        this.context.commit('setStreams', result.data)
+      })
+      .catch((err) => {
+        console.log('Err', err)
+      })
   }
 
   get streams () {
