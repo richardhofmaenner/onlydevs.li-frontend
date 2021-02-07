@@ -1,0 +1,15 @@
+version: '3'
+services:
+  frontend:
+    build:
+      dockerfile: Dev.Dockerfile
+      context: .
+    ports:
+    - 127.0.0.1:3000:3000
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=development
+      - API_URL=http://192.168.247.128:8000
+    volumes:
+    - ./:/app
+    restart: unless-stopped
