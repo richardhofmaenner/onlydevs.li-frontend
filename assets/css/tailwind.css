@@ -18,3 +18,10 @@ h2 {
 h3 {
   @apply text-xl;
 }
+
+.btn {
+  @apply border;
+  @apply border-white;
+  @apply p-5;
+  @apply text-white;
+}

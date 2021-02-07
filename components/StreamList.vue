@@ -3,6 +3,9 @@
     <div class="grid grid-cols-4 gap-4">
       <Stream v-for="stream in reversedList" :key="stream.user_id" :stream="stream" />
     </div>
+    <div class="mt-10 text-center">
+      <a class="btn" @click="loadMore">Load more</a>
+    </div>
   </div>
 </template>
 
@@ -20,13 +23,17 @@ export default Vue.extend({
   },
   computed: {
     reversedList (): Array<Stream> {
-      // eslint-disable-next-line vue/no-mutating-props,vue/no-side-effects-in-computed-properties
-      console.log('BaseURL', typeof this.$axios.defaults.baseURL, this.$axios.defaults.baseURL)
-      if (this.streams.length !== null && this.streams.length > 0) {
-        return this.streams.reverse()
+      const streamsList = this.streams
+      if (streamsList.length !== null && streamsList.length > 0) {
+        return streamsList.reverse()
       } else {
-        return  this.streams
+        return streamsList
       }
+    }
+  },
+  methods: {
+    loadMore () {
+      this.$nuxt.context.store.dispatch('streams/loadNewStreams')
     }
   }
 })

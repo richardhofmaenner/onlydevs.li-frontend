@@ -1,7 +1,7 @@
 <template>
   <div class="border border-white hover:bg-white hover:text-black relative">
     <a :href="twitchLink" class="absolute top-0 left-0 w-full h-full" target="_blank" />
-    <img :src="stream.thumbnail_url" alt="">
+    <img :src="thumbnailUrl" alt="">
     <div class="px-4">
       <h3 class="text-xl">
         {{ stream.title }}
@@ -28,13 +28,13 @@ export default Vue.extend({
   computed: {
     twitchLink (): string {
       return `https://twitch.tv/${this.stream.user_login}`
+    },
+    thumbnailUrl (): string {
+      let url = this.stream.thumbnail_url
+      url = url.replace('{width}', '480')
+      url = url.replace('{height}', '270')
+      return url
     }
-  },
-  mounted () {
-    // eslint-disable-next-line vue/no-mutating-props
-    this.stream.thumbnail_url = this.stream.thumbnail_url.replace('{width}', '960')
-    // eslint-disable-next-line vue/no-mutating-props
-    this.stream.thumbnail_url = this.stream.thumbnail_url.replace('{height}', '540')
   }
 })
 </script>
